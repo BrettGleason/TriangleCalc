@@ -1,9 +1,10 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "Triangle.h"
 
 int main(void) {
 	printf("Please enter the lengths of the triangle's sides in meters:\n");
-	int a, b, c = 0;
+	uint32_t a, b, c = 0;
 	printf("Side a: ");
 	scanf("%d", &a);
 	printf("Side b: ");
@@ -13,7 +14,7 @@ int main(void) {
 
 	struct triangle_3s t1 = {a, b, c};
 
-	int tri_check = verify_triangle(t1);
+	uint32_t tri_check = verify_triangle(t1);
 
 	if (tri_check == 1) {
 		printf("Triangle is valid.\n");

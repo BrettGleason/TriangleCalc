@@ -1,7 +1,8 @@
 #include "Triangle.h"
 #include <math.h>
+#include <stdint.h>
 
-int verify_triangle(struct triangle_3s triangle) {
+uint32_t verify_triangle(struct triangle_3s triangle) {
 	/* Return 1 if triangle is valid, else return 0 */
 	/* Use Triangle Inequality Theorem to make sure triangle is valid. */
 	if (triangle.a + triangle.b > triangle.c &&

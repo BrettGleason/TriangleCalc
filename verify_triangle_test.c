@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "Triangle.h"
 
 int main(void) {
@@ -15,7 +16,7 @@ int main(void) {
 	struct triangle_3s test6 = {50, 100, 30}; // Invalid, side B too long
 	struct triangle_3s test7 = {50, 30, 100}; // Invalid, side C too long
 
-	int result = 2;
+	uint32_t result = 2;
 	
 	result = verify_triangle(test1);
 	printf("Test case 1: {%d, %d, %d}\n", test1.a, test1.b, test1.c);
