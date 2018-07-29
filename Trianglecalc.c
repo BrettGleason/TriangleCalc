@@ -2,8 +2,7 @@
 #include "Triangle.c"
 
 int main(void) {
-	printf("Please enter the lengths of the triangle's sides:\n");
-	printf("(Answer given in same units as side lengths, all lengths must be in same units.)\n");
+	printf("Please enter the lengths of the triangle's sides in meters:\n");
 	int a, b, c = 0;
 	printf("Side a: ");
 	scanf("%d", &a);
@@ -21,7 +20,12 @@ int main(void) {
 	}
 	else if (tri_check == 0) {
 		printf("Invalid triangle.\n");
+		return -1;
 	}
+
+	double area = area_of_triangle(t1);
+
+	printf("The area of the triangle is %f square meters.\n", area);
 
 	return 0;
 }

@@ -7,4 +7,6 @@ struct triangle_3s {
 
 int verify_triangle(struct triangle_3s);
 
+double area_of_triangle(struct triangle_3s);
+
 #endif
