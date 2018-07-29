@@ -25,7 +25,7 @@ int main(void) {
 
 	double area = area_of_triangle(t1);
 
-	printf("The area of the triangle is %f square meters.\n", area);
+	printf("The area of the triangle is %.2f square meters.\n", area);
 
 	return 0;
 }
