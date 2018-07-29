@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "Triangle.c"
+#include "Triangle.h"
 
 int main(void) {
 	printf("Please enter the lengths of the triangle's sides in meters:\n");
