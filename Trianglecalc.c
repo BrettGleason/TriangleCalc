@@ -6,11 +6,11 @@ int main(void) {
 	printf("Please enter the lengths of the triangle's sides in meters:\n");
 	uint32_t a, b, c = 0;
 	printf("Side a: ");
-	scanf("%d", &a);
+	scanf("%u", &a);
 	printf("Side b: ");
-	scanf("%d", &b);
+	scanf("%u", &b);
 	printf("Side c: ");
-	scanf("%d", &c);
+	scanf("%u", &c);
 
 	struct triangle_3s t1 = {a, b, c};
 

@@ -19,7 +19,7 @@ int main(void) {
 	uint32_t result = 2;
 	
 	result = verify_triangle(test1);
-	printf("Test case 1: {%d, %d, %d}\n", test1.a, test1.b, test1.c);
+	printf("Test case 1: {%u, %u, %u}\n", test1.a, test1.b, test1.c);
 	if (result == 1) {
 		printf("Triangle is valid, TEST 1 OK\n");
 	}
@@ -31,7 +31,7 @@ int main(void) {
 	}
 		
 	result = verify_triangle(test2);
-	printf("Test case 2: {%d, %d, %d}\n", test2.a, test2.b, test2.c);
+	printf("Test case 2: {%u, %u, %u}\n", test2.a, test2.b, test2.c);
 	if (result == 1) {
 		printf("Triangle is valid, TEST 2 OK\n");
 	}
@@ -43,7 +43,7 @@ int main(void) {
 	}
 
 	result = verify_triangle(test3);
-	printf("Test case 3: {%d, %d, %d}\n", test3.a, test3.b, test3.c);
+	printf("Test case 3: {%u, %u, %u}\n", test3.a, test3.b, test3.c);
 	if (result == 1) {
 		printf("Triangle is valid, TEST 3 OK\n");
 	}
@@ -55,7 +55,7 @@ int main(void) {
 	}
 
 	result = verify_triangle(test4);
-	printf("Test case 4: {%d, %d, %d}\n", test4.a, test4.b, test4.c);
+	printf("Test case 4: {%u, %u, %u}\n", test4.a, test4.b, test4.c);
 	if (result == 1) {
 		printf("Triangle is valid, TEST 4 OK\n");
 	}
@@ -67,7 +67,7 @@ int main(void) {
 	}
 
 	result = verify_triangle(test5);
-	printf("Test case 5: {%d, %d, %d}\n", test5.a, test5.b, test5.c);
+	printf("Test case 5: {%u, %u, %u}\n", test5.a, test5.b, test5.c);
 	if (result == 0) {
 		printf("Triangle is invalid, TEST 5 OK\n");
 	}
@@ -79,7 +79,7 @@ int main(void) {
 	}
 
 	result = verify_triangle(test6);
-	printf("Test case 6: {%d, %d, %d}\n", test6.a, test6.b, test6.c);
+	printf("Test case 6: {%u, %u, %u}\n", test6.a, test6.b, test6.c);
 	if (result == 0) {
 		printf("Triangle is invalid, TEST 6 OK\n");
 	}
@@ -91,7 +91,7 @@ int main(void) {
 	}
 
 	result = verify_triangle(test7);
-	printf("Test case 7: {%d, %d, %d}\n", test7.a, test7.b, test7.c);
+	printf("Test case 7: {%u, %u, %u}\n", test7.a, test7.b, test7.c);
 	if (result == 0) {
 		printf("Triangle is invalid, TEST 7 OK\n");
 	}
