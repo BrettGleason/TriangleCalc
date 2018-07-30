@@ -8,98 +8,66 @@ int main(void) {
 	 *    triangle side lengths are non-negative integers that are smaller
 	 *    than the upper limit of an unsigned 32 bit integer. */
 
-	struct triangle_3s test1 = {3, 4, 5}; // Valid triangle, right triangle
-	struct triangle_3s test2 = {1000, 1000, 1000}; // Valid triangle, equilateral triangle
-	struct triangle_3s test3 = {200, 200, 390}; // Valid triangle, isoceles triangle
-	struct triangle_3s test4 = {50, 60, 70}; // Valid triangle, scalene
-	struct triangle_3s test5 = {100, 50, 30}; // Invalid, side A too long
-	struct triangle_3s test6 = {50, 100, 30}; // Invalid, side B too long
-	struct triangle_3s test7 = {50, 30, 100}; // Invalid, side C too long
+	/* TODO: test function for case where triangle side lengths are
+	 * individually smaller than the 32 bit integer limit but add up to be
+	 * larger */
+
+	/* Increment test_count each time a test case is added */
+	const uint32_t test_count = 7;
+
+	/* If I try to declare the test array using test_count as the size, I
+	 * get a compilation error because the size of the array is not known
+	 * at compile time. Values are initialized this way because trying to 
+	 * initialize them as in the commented lines below threw another
+	 * compile time error. I'd like to figure out a way to initialize these
+	 * values that is more similar to the commented lines so that the test
+	 * case reasoning can be described. */
+	struct triangle_3s test[7] = {  {3, 4, 5},
+		                        {1000, 1000, 1000},
+				        {200, 200, 390},
+					{50, 60, 70},
+					{100, 50, 30},
+					{50, 100, 30},
+					{50, 30, 100} };
+	uint32_t exp_result[test_count]; // 0 for invalid triangle, 1 for valid triangle
+
+	// test[0] = {3, 4, 5}; // Valid triangle, right triangle
+	exp_result[0] = 1;
+	// test[1] = {1000, 1000, 1000}; // Valid triangle, equilateral triangle
+	exp_result[1] = 1;
+	// test[2] = {200, 200, 390}; // Valid triangle, isoceles triangle
+	exp_result[2] = 1;
+	// test[3] = {50, 60, 70}; // Valid triangle, scalene
+	exp_result[3] = 1;
+	// test[4] = {100, 50, 30}; // Invalid, side A too long
+	exp_result[4] = 0;
+	// test[5] = {50, 100, 30}; // Invalid, side B too long
+	exp_result[5] = 0;
+	// test[6] = {50, 30, 100}; // Invalid, side C too long
+	exp_result[6] = 0;
+
+	
 
 	uint32_t result = 2;
 	
-	result = verify_triangle(test1);
-	printf("Test case 1: {%u, %u, %u}\n", test1.a, test1.b, test1.c);
-	if (result == 1) {
-		printf("Triangle is valid, TEST 1 OK\n");
-	}
-	else if (result == 0) {
-		printf("Triangle is invalid, TEST 1 FAILED\n");
-	}
-	else {
-		printf("Result out of bounds, TEST 1 FAILED\n");
-	}
-		
-	result = verify_triangle(test2);
-	printf("Test case 2: {%u, %u, %u}\n", test2.a, test2.b, test2.c);
-	if (result == 1) {
-		printf("Triangle is valid, TEST 2 OK\n");
-	}
-	else if (result == 0) {
-		printf("Triangle is invalid, TEST 2 FAILED\n");
-	}
-	else {
-		printf("Result out of bounds, TEST 2 FAILED\n");
-	}
-
-	result = verify_triangle(test3);
-	printf("Test case 3: {%u, %u, %u}\n", test3.a, test3.b, test3.c);
-	if (result == 1) {
-		printf("Triangle is valid, TEST 3 OK\n");
-	}
-	else if (result == 0) {
-		printf("Triangle is invalid, TEST 3 FAILED\n");
-	}
-	else {
-		printf("Result out of bounds, TEST 3 FAILED\n");
-	}
-
-	result = verify_triangle(test4);
-	printf("Test case 4: {%u, %u, %u}\n", test4.a, test4.b, test4.c);
-	if (result == 1) {
-		printf("Triangle is valid, TEST 4 OK\n");
-	}
-	else if (result == 0) {
-		printf("Triangle is invalid, TEST 4 FAILED\n");
-	}
-	else {
-		printf("Result out of bounds, TEST 4 FAILED\n");
-	}
-
-	result = verify_triangle(test5);
-	printf("Test case 5: {%u, %u, %u}\n", test5.a, test5.b, test5.c);
-	if (result == 0) {
-		printf("Triangle is invalid, TEST 5 OK\n");
-	}
-	else if (result == 1) {
-		printf("Triangle is valid, TEST 5 FAILED\n");
-	}
-	else {
-		printf("Result out of bounds, TEST 5 FAILED\n");
-	}
-
-	result = verify_triangle(test6);
-	printf("Test case 6: {%u, %u, %u}\n", test6.a, test6.b, test6.c);
-	if (result == 0) {
-		printf("Triangle is invalid, TEST 6 OK\n");
-	}
-	else if (result == 1) {
-		printf("Triangle is valid, TEST 6 FAILED\n");
-	}
-	else {
-		printf("Result out of bounds, TEST 6 FAILED\n");
-	}
-
-	result = verify_triangle(test7);
-	printf("Test case 7: {%u, %u, %u}\n", test7.a, test7.b, test7.c);
-	if (result == 0) {
-		printf("Triangle is invalid, TEST 7 OK\n");
-	}
-	else if (result == 1) {
-		printf("Triangle is valid, TEST 7 FAILED\n");
-	}
-	else {
-		printf("Result out of bounds, TEST 7 FAILED\n");
+	for (int i = 0; i < (sizeof(test) / sizeof(struct triangle_3s)); i++) {
+		printf("Test case %u: {%u, %u, %u}\n", i + 1, test[i].a, test[i].b, test[i].c);
+		result = verify_triangle(test[i]);
+		if (result == 1) {
+			printf("Triangle is valid, ");
+		}
+		else if (result == 0) {
+			printf("Triangle is invalid, ");
+		}
+		else {
+			printf("Result out of bounds, ");
+		}
+		if (result == exp_result[i]) {
+			printf("TEST %u OK\n", i + 1);
+		}
+		else {
+			printf("TEST %u FAILED\n", i + 1);
+		}
 	}
 
 	return 0;
