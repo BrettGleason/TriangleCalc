@@ -31,9 +31,9 @@ uint32_t get_side_length(char* side_length) {
 	/* Read string from stdin, convert to a valid 32 bit unsigned integer */
 	char input[sizeof(side_length)];
 	/* output stores converted integer value. If the result is invalid then
-	 * validate_input() will return -1 */
-	uint32_t output = -1;
-	uint32_t result = -1;
+	 * validate_input() will return 0 */
+	uint32_t output = 0;
+	uint32_t result = 0;
 	do {
 		strcpy(input, fgets(side_length, sizeof(side_length), stdin));
 		result = validate_input(input, &output);
