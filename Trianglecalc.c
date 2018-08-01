@@ -4,13 +4,14 @@
 
 int main(void) {
 	printf("Please enter the lengths of the triangle's sides in meters:\n");
+	char side_a[11], side_b[11], side_c[11];
 	uint32_t a, b, c = 0;
 	printf("Side a: ");
-	scanf("%u", &a);
+	a = get_side_length(side_a);
 	printf("Side b: ");
-	scanf("%u", &b);
+	b = get_side_length(side_b);
 	printf("Side c: ");
-	scanf("%u", &c);
+	c = get_side_length(side_c);
 
 	struct triangle_3s t1 = {a, b, c};
 

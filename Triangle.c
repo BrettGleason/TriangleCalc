@@ -1,6 +1,10 @@
 #include "Triangle.h"
+#include <stdio.h>
 #include <math.h>
 #include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
+#include <limits.h>
 
 uint32_t verify_triangle(struct triangle_3s triangle) {
 	/* Return 1 if triangle is valid, else return 0 */
@@ -21,3 +25,52 @@ double area_of_triangle(struct triangle_3s triangle) {
 	double area = sqrt(s*(s-triangle.a)*(s-triangle.b)*(s-triangle.c));
 	return area;
 }
+	/* TODO */
+
+uint32_t get_side_length(char* side_length) {
+	/* Read string from stdin, convert to a valid 32 bit unsigned integer */
+	char input[sizeof(side_length)];
+	/* output stores converted integer value. If the result is invalid then
+	 * validate_input() will return -1 */
+	uint32_t output = -1;
+	uint32_t result = -1;
+	do {
+		strcpy(input, fgets(side_length, sizeof(side_length), stdin));
+		result = validate_input(input, &output);
+	} while (result == 0);
+
+	return output;
+}
+
+uint32_t validate_input(char* input, uint32_t* output) {
+	/* Converts the string from the user into a valid unsigned 32 bit integer.
+	 * If the user input is valid, return 1
+	 * If the user input is invalid, return 0 */
+
+	/* Stores the address at which strtol stops reading the string */
+	char *endpoint;
+	/* Using a long int for this value because the strtol function is built
+	 * in and very handy but it returns a long int. It's easier to check that
+	 * the converted number is within the bounds of an unsigned 32 bit integer
+	 * than to roll my own strtol that returns a uint_32t. */
+	long int converted_number = strtol(input, &endpoint, 10);
+
+	/* Make sure that strtol read the whole string - implying the input
+	 * contained only numbers and not a combination of letters and numbers
+	 * endpoint will be '\0' if passed as a command line argument or '\n'
+	 * if string is from user input. */
+	if (*endpoint != '\0' && *endpoint != '\n') {
+		return 0;
+	}
+
+	if (converted_number > 0 && converted_number <= UINT_MAX) {
+		*output = converted_number;
+	}
+	else {
+		return 0;
+	}
+
+	return 1;
+}
+
+
