@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I. -Wall -Wextra -Wpedantic -Werror -d3
+CFLAGS=-I. -Wall -Wextra -Wpedantic -Werror -ggdb3
 DEPS = Triangle.h
 OBJ = Trianglecalc.o Triangle.o
 LIBS=-lm
