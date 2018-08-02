@@ -1,9 +1,11 @@
 CC=gcc
 CFLAGS=-I. -Wall -Wextra -Wpedantic -Werror
 DEPS = Triangle.h
+OBJ = Trianglecalc.o Triangle.o
+LIBS=-lm
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-Trianglecalc: Trianglecalc.o Triangle.o
-	$(CC) -o triangle Trianglecalc.o Triangle.o -lm
+Trianglecalc: $(OBJ)
+	$(CC) -o triangle $^ $(CFLAGS) $(LIBS)
