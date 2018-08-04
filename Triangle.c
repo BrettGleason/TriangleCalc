@@ -40,11 +40,12 @@ uint32_t verify_triangle(struct triangle_3s triangle) {
 
 double area_of_triangle(struct triangle_3s triangle) {
 	/* Calculate area using Herons's formula */
-	double s = (triangle.a + triangle.b + triangle.c) / 2;
+
+	/* Cast integers to double here because integer division truncates */
+	double s = ((double)triangle.a + (double)triangle.b + (double)triangle.c) / 2;
 	double area = sqrt(s*(s-triangle.a)*(s-triangle.b)*(s-triangle.c));
 	return area;
 }
-	/* TODO */
 
 uint32_t get_side_length(char* side_length) {
 	/* Read string from stdin, convert to a valid 32 bit unsigned integer */
