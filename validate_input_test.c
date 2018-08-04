@@ -2,21 +2,62 @@
 #include <stdint.h>
 #include "Triangle.h"
 
+#define TEST_COUNT 17
+
 int main(void) {
-	test1 = -1000000000; 	// Large negative number
-	test2 = -1;		// Small negative number
-	test3 = 0;		// Zero
-	test4 = 3;		// Small positive number
-	test5 = 4294967295;	// Limit of 32 bit integers
-	test6 = 5000000000;	// Larger than 32 bit integer limit
-	test7 = 50 100;		// Two numbers at once
-	test8 = 751.3;		// Floating point instead of integer
-	test9 = "Rover";	// string instead of integer
-	test10 = "The quick brown fox jumped over the lazy dog"; // Long string with spaces
-	test11 = 123456789101112131415161718192021222324252627282930; // Long integer
-	test12 = 12345 678910 1112131415 1617181920; // Long integer with spaces
-	test13 = "123AA";	// Numbers and letters
-	test14 = "123 AA";	// Numbers and letters with a space
+
+	char test[TEST_COUNT][1000] = {"-1000000000",
+				  "-1",
+				  "0",
+				  "3",
+				  "4294967295",
+				  "5000000000",
+				  "50 100",
+				  "751.3",
+				  "Rover",
+				  "The quick brown fox jumped over the lazy dog",
+				  "123456789101112131415161718192021222324252627282930",
+				  "12345 678910 1112131415 1617181920",
+				  "50,100,80",
+				  "123AA",
+				  "AA123",
+				  "123 AA",
+				  "AA 123"};
+	uint32_t exp_result[TEST_COUNT] = {0,
+					   0,
+					   0,
+					   1,
+					   1,
+					   0,
+					   0,
+					   0,
+					   0,
+					   0,
+					   0,
+					   0,
+					   0,
+					   0,
+					   0,
+					   0,
+					   0};
+	uint32_t result, output = 0;
+
+	for (uint32_t i = 0; i < TEST_COUNT; i++) {
+		printf("Test %u input: %s\n", i + 1, test[i]);
+		result = validate_input(test[i], &output);
+		if (result == 1) {
+			printf("input is valid, ");
+		}
+		else {
+			printf("input is invalid, ");
+		}
+		if (result == exp_result[i]) {
+			printf("TEST %u OK\n", i + 1);
+		}
+		else {
+			printf("TEST %u FAILED\n", i + 1);
+		}
+	}
 	
 	return 0;
 }
