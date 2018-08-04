@@ -50,8 +50,8 @@ int main(void) {
 	exp_result[7] = 1;
 	// test[8] = {UINT_MAX, 10000, 10000}; // Invalid triangle with integer overflow
 	exp_result[8] = 0;
-	// test[9] = {UINT_MAX, UINT_MAX, 50000}; // Invalid triangle with integer overflow
-	exp_result[9] = 0;
+	// test[9] = {UINT_MAX, UINT_MAX, 50000}; // Valid triangle with integer overflow
+	exp_result[9] = 1;
 
 	
 

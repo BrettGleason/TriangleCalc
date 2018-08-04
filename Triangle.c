@@ -9,9 +9,28 @@
 uint32_t verify_triangle(struct triangle_3s triangle) {
 	/* Return 1 if triangle is valid, else return 0 */
 	/* Use Triangle Inequality Theorem to make sure triangle is valid. */
-	if (triangle.a + triangle.b > triangle.c &&
-			triangle.a + triangle.c > triangle.b &&
-			triangle.b + triangle.c > triangle.a) {
+
+	/* ovf variables establish if the addition of two side lengths will
+	 * overflow the maximum size of a 32 bit unsigned integer */
+	uint32_t ovf_ab, ovf_ac, ovf_bc = 0;
+	if (UINT_MAX - triangle.a < triangle.b) {
+		ovf_ab = 1;
+	}
+	if (UINT_MAX - triangle.a < triangle.c) {
+		ovf_ac = 1;
+	}
+	if (UINT_MAX - triangle.b < triangle.c) {
+		ovf_bc = 1;
+	}
+	
+	/* In the case where two side lengths don't add to a larger value
+	 * than the unsigned 32 bit int max, the test on the left side of 
+	 * the OR will work. If the addition of two side lengths overflows
+	 * the UINT_MAX, the result must be larger than the third side which
+	 * is limited to UINT_MAX during data collection. */
+	if ( (triangle.a + triangle.b > triangle.c || ovf_ab == 1 ) &&
+			(triangle.a + triangle.c > triangle.b || ovf_ac == 1) &&
+			(triangle.b + triangle.c > triangle.a || ovf_bc == 1) ) {
 		return 1;
 	}
 	else {
