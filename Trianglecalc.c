@@ -4,20 +4,33 @@
 
 int main(int argc, char *argv[]) {
 	uint32_t a, b, c = 0;
+	uint32_t result_a, result_b, result_c = 0;
 	if (argc == 1) {
 		printf("Please enter the lengths of the triangle's sides in meters:\n");
 		char side_a[11], side_b[11], side_c[11];
 		printf("Side a: ");
-		a = get_side_length(side_a);
+		result_a = get_side_length(side_a, &a);
+		if (result_a == 0) {
+			printf("Invalid side length provided.\n");
+			return -1;
+		}
 		printf("Side b: ");
-		b = get_side_length(side_b);
+		result_b = get_side_length(side_b, &b);
+		if (result_b == 0) {
+			printf("Invalid side length provided.\n");
+			return -1;
+		}
 		printf("Side c: ");
-		c = get_side_length(side_c);
+		result_c = get_side_length(side_c, &c);
+		if (result_c == 0) {
+			printf("Invalid side length provided.\n");
+			return -1;
+		}
 	}
 	else if (argc == 4) {
-		uint32_t result_a = validate_input(argv[1], &a);
-		uint32_t result_b = validate_input(argv[2], &b);
-		uint32_t result_c = validate_input(argv[3], &c);
+		result_a = validate_input(argv[1], &a);
+		result_b = validate_input(argv[2], &b);
+		result_c = validate_input(argv[3], &c);
 
 		if (result_a == 0 || result_b == 0 || result_c == 0) {
 			printf("Invalid arguments provided.\n");
