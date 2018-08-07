@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdlib.h>
-#include <limits.h>
 
 uint32_t verify_triangle(struct triangle_3s triangle) {
 	/* Return 1 if triangle is valid, else return 0 */
@@ -13,13 +12,13 @@ uint32_t verify_triangle(struct triangle_3s triangle) {
 	/* ovf variables establish if the addition of two side lengths will
 	 * overflow the maximum size of a 32 bit unsigned integer */
 	uint32_t ovf_ab, ovf_ac, ovf_bc = 0;
-	if (UINT_MAX - triangle.a < triangle.b) {
+	if (UINT32_MAX - triangle.a < triangle.b) {
 		ovf_ab = 1;
 	}
-	if (UINT_MAX - triangle.a < triangle.c) {
+	if (UINT32_MAX - triangle.a < triangle.c) {
 		ovf_ac = 1;
 	}
-	if (UINT_MAX - triangle.b < triangle.c) {
+	if (UINT32_MAX - triangle.b < triangle.c) {
 		ovf_bc = 1;
 	}
 	
@@ -83,7 +82,7 @@ uint32_t validate_input(char* input, uint32_t* output) {
 		return 0;
 	}
 
-	if (converted_number > 0 && converted_number <= UINT_MAX) {
+	if (converted_number > 0 && converted_number <= UINT32_MAX) {
 		*output = converted_number;
 	}
 	else {

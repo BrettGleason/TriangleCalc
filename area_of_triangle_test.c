@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <math.h>
-#include <limits.h>
 #include "Triangle.h"
 
 #define TEST_COUNT 7
@@ -25,7 +24,7 @@ int main(void) {
 						{30000, 40000, 50000},
 						{3000000, 4000000, 5000000},
 						{300000000, 400000000, 500000000},
-						{UINT_MAX, UINT_MAX, UINT_MAX} }; //Largest possible triangle
+						{UINT32_MAX, UINT32_MAX, UINT32_MAX} }; //Largest possible triangle
 
 	double answer[TEST_COUNT] = {0.4330127019,
 				     6.0,

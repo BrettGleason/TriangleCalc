@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <limits.h>
 #include "Triangle.h"
 
 #define TEST_COUNT 10 // Increment TEST_COUNT each time a test case is added
@@ -26,9 +25,9 @@ int main(void) {
 						{100, 50, 30},
 						{50, 100, 30},
 						{50, 30, 100},
-						{UINT_MAX, UINT_MAX, UINT_MAX},
-						{UINT_MAX, 10000, 10000},
-						{UINT_MAX, UINT_MAX, 50000}, };
+						{UINT32_MAX, UINT32_MAX, UINT32_MAX},
+						{UINT32_MAX, 10000, 10000},
+						{UINT32_MAX, UINT32_MAX, 50000}, };
 
 	uint32_t exp_result[TEST_COUNT]; // 0 for invalid triangle, 1 for valid triangle
 
@@ -46,11 +45,11 @@ int main(void) {
 	exp_result[5] = 0;
 	// test[6] = {50, 30, 100}; // Invalid, side C too long
 	exp_result[6] = 0;
-	// test[7] = {UINT_MAX, UINT_MAX, UINT_MAX}; // Largest valid triangle
+	// test[7] = {UINT32_MAX, UINT32_MAX, UINT32_MAX}; // Largest valid triangle
 	exp_result[7] = 1;
-	// test[8] = {UINT_MAX, 10000, 10000}; // Invalid triangle with integer overflow
+	// test[8] = {UINT32_MAX, 10000, 10000}; // Invalid triangle with integer overflow
 	exp_result[8] = 0;
-	// test[9] = {UINT_MAX, UINT_MAX, 50000}; // Valid triangle with integer overflow
+	// test[9] = {UINT32_MAX, UINT32_MAX, 50000}; // Valid triangle with integer overflow
 	exp_result[9] = 1;
 
 	
