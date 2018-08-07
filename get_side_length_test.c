@@ -11,6 +11,8 @@ int main(void) {
 	 * rather than as a command line argument, the test cases are the same
 	 * as for validate_input() except with a newline character at the end
 	 * of the entry */
+
+	/* CONTENTS OF get_side_length_test_input.txt */
 	char test[TEST_COUNT][1000] = {"-1000000000\n",
 				  "-1\n",
 				  "0\n",
@@ -27,7 +29,7 @@ int main(void) {
 				  "123AA\n",
 				  "AA123\n",
 				  "123 AA\n",
-				  "AA 123\n"};
+				  "AA 123\n"}; 
 	uint32_t exp_result[TEST_COUNT] = {0,
 					   0,
 					   0,
@@ -46,10 +48,11 @@ int main(void) {
 					   0,
 					   0};
 	uint32_t result = 0, output = 0;
+	char input[11];
 
 	for (uint32_t i = 0; i < TEST_COUNT; i++) {
 		printf("Test %u input: %s\n", i + 1, test[i]);
-		result = get_side_length(test[i], &output);
+		result = get_side_length(input, &output);
 		if (result == 1) {
 			printf("input is valid, ");
 		}
