@@ -9,19 +9,19 @@ int main(int argc, char *argv[]) {
 		printf("Please enter the lengths of the triangle's sides in meters:\n");
 		char side_a[11], side_b[11], side_c[11];
 		printf("Side a: ");
-		result_a = get_side_length(side_a, &a);
+		result_a = get_side_length(side_a, &a, stdin);
 		if (result_a == 0) {
 			printf("Invalid side length provided.\n");
 			return -1;
 		}
 		printf("Side b: ");
-		result_b = get_side_length(side_b, &b);
+		result_b = get_side_length(side_b, &b, stdin);
 		if (result_b == 0) {
 			printf("Invalid side length provided.\n");
 			return -1;
 		}
 		printf("Side c: ");
-		result_c = get_side_length(side_c, &c);
+		result_c = get_side_length(side_c, &c, stdin);
 		if (result_c == 0) {
 			printf("Invalid side length provided.\n");
 			return -1;

@@ -46,7 +46,7 @@ double area_of_triangle(struct triangle_3s triangle) {
 	return area;
 }
 
-uint32_t get_side_length(char* side_length, uint32_t* output) {
+uint32_t get_side_length(char* side_length, uint32_t* output, FILE* in_stream) {
 	/* Read string from stdin, convert to a valid 32 bit unsigned integer 
 	 * and store the result at side_length.
 	 * If the user input is valid, return 1
@@ -56,7 +56,7 @@ uint32_t get_side_length(char* side_length, uint32_t* output) {
 	/* output stores converted integer value. If the result is invalid then
 	 * validate_input() will return 0 */
 	uint32_t result = 0;
-	strcpy(input, fgets(side_length, sizeof(side_length), stdin));
+	strcpy(input, fgets(side_length, sizeof(side_length), in_stream));
 	result = validate_input(input, output);
 
 	return result;
