@@ -48,6 +48,7 @@ double area_of_triangle(struct triangle_3s triangle) {
 
 uint32_t get_side_length(char* side_length, uint32_t* output) {
 	/* Read string from stdin, convert to a valid 32 bit unsigned integer 
+	 * and store the result at side_length.
 	 * If the user input is valid, return 1
 	 * If the user input is invalid, return 0 */
 	

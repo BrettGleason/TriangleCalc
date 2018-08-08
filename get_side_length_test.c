@@ -51,7 +51,7 @@ int main(void) {
 	char input[11];
 
 	for (uint32_t i = 0; i < TEST_COUNT; i++) {
-		printf("Test %u input: %s\n", i + 1, test[i]);
+		printf("Test %u input: %s", i + 1, test[i]);
 		result = get_side_length(input, &output);
 		if (result == 1) {
 			printf("input is valid, ");
@@ -60,10 +60,10 @@ int main(void) {
 			printf("input is invalid, ");
 		}
 		if (result == exp_result[i]) {
-			printf("TEST %u OK\n", i + 1);
+			printf("TEST %u OK\n\n", i + 1);
 		}
 		else {
-			printf("TEST %u FAILED\n", i + 1);
+			printf("TEST %u FAILED\n\n", i + 1);
 		}
 	}
 	
