@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 #include "Triangle.h"
 
 /* Iterate when new test cases are added */
@@ -48,11 +49,12 @@ int main(void) {
 					   0,
 					   0};
 	uint32_t result = 0, output = 0;
-	char input[11];
 
 	for (uint32_t i = 0; i < TEST_COUNT; i++) {
-		printf("Test %u input: %s", i + 1, test[i]);
-		result = get_side_length(input, &output);
+		FILE* mock_stdin = fmemopen(NULL, strlen(test[i]), "w");
+		fprintf(mock_stdin, test[i]);
+		printf("Test %u input: %s", i + 2, test[i]);
+		result = get_side_length(&output, mock_stdin);
 		if (result == 1) {
 			printf("input is valid, ");
 		}
