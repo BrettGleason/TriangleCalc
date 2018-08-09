@@ -38,19 +38,16 @@ int main(int argc, char *argv[]) {
 	}
 	else {
 		printf("Incorrect number of arguments provided.\n");
-		return -1;
+		return -2;
 	}
 
 	struct triangle_3s t1 = {a, b, c};
 
 	uint32_t tri_check = verify_triangle(t1);
 
-	if (tri_check == 1) {
-		printf("Triangle is valid.\n");
-	}
-	else if (tri_check == 0) {
+	if (tri_check == 0) {
 		printf("Invalid triangle.\n");
-		return -1;
+		return -3;
 	}
 
 	double area = area_of_triangle(t1);
