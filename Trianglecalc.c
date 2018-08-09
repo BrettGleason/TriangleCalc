@@ -7,21 +7,20 @@ int main(int argc, char *argv[]) {
 	uint32_t result_a, result_b, result_c = 0;
 	if (argc == 1) {
 		printf("Please enter the lengths of the triangle's sides in meters:\n");
-		char side_a[11], side_b[11], side_c[11];
 		printf("Side a: ");
-		result_a = get_side_length(side_a, &a, stdin);
+		result_a = get_side_length(&a, stdin);
 		if (result_a == 0) {
 			printf("Invalid side length provided.\n");
 			return -1;
 		}
 		printf("Side b: ");
-		result_b = get_side_length(side_b, &b, stdin);
+		result_b = get_side_length(&b, stdin);
 		if (result_b == 0) {
 			printf("Invalid side length provided.\n");
 			return -1;
 		}
 		printf("Side c: ");
-		result_c = get_side_length(side_c, &c, stdin);
+		result_c = get_side_length(&c, stdin);
 		if (result_c == 0) {
 			printf("Invalid side length provided.\n");
 			return -1;

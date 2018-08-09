@@ -46,18 +46,38 @@ double area_of_triangle(struct triangle_3s triangle) {
 	return area;
 }
 
-uint32_t get_side_length(char* side_length, uint32_t* output, FILE* in_stream) {
+uint32_t get_side_length(uint32_t* output, FILE* in_stream) {
 	/* Read string from stdin, convert to a valid 32 bit unsigned integer 
 	 * and store the result at side_length.
 	 * If the user input is valid, return 1
 	 * If the user input is invalid, return 0 */
+
+	/* String length is 11 because the maximum length of an unsigned 32 bit
+	 * integer is 10 digits, plus 1 byte for the newline and 1 byte needed 
+	 * to terminate the string. 
+	 * The string is initialized such that the last char != '\0' to
+	 * facilitate testing for the user input exceeding the buffer length. */
+	char side_length[12] = "AAAAAAAAAAA";
+	side_length[11] = 'A';
 	
-	char input[sizeof(side_length)];
 	/* output stores converted integer value. If the result is invalid then
 	 * validate_input() will return 0 */
 	uint32_t result = 0;
-	strcpy(input, fgets(side_length, sizeof(side_length), in_stream));
-	result = validate_input(input, output);
+	fgets(side_length, sizeof(side_length), in_stream);
+	/* If the input stream overflows side_length, there will be extra
+	 * characters in the stream that are picked up by the next input
+	 * unless they are cleared by getchar(). If the input fits into 
+	 * side_length it will terminate with a '\n' */
+	if (side_length[sizeof(side_length) - 1] == '\0' && side_length[sizeof(side_length) - 2] != '\n') {
+		/* Consume excess input */
+		char extra_char;
+		while ((extra_char = fgetc(in_stream)) != '\n' && extra_char != EOF) {
+			continue;
+		}
+		return 0;
+	}	
+	
+	result = validate_input(side_length, output);
 
 	return result;
 }
