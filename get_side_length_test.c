@@ -51,9 +51,10 @@ int main(void) {
 	uint32_t result = 0, output = 0;
 
 	for (uint32_t i = 0; i < TEST_COUNT; i++) {
-		FILE* mock_stdin = fmemopen(NULL, strlen(test[i]), "w");
+		FILE* mock_stdin = fmemopen(test[i], strlen(test[i]), "r+");
 		fprintf(mock_stdin, test[i]);
-		printf("Test %u input: %s", i + 2, test[i]);
+		rewind(mock_stdin);
+		printf("Test %u input: %s", i + 1, test[i]);
 		result = get_side_length(&output, mock_stdin);
 		if (result == 1) {
 			printf("input is valid, ");
@@ -67,6 +68,8 @@ int main(void) {
 		else {
 			printf("TEST %u FAILED\n\n", i + 1);
 		}
+
+		fclose(mock_stdin);
 	}
 	
 	return 0;
