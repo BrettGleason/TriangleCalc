@@ -36,6 +36,14 @@ Give examples
 
 Explain how to run the automated tests for this system
 
+### Unit Tests
+
+### End to end test
+main() function error conditions:
+  -1 - Invalid side length provided
+  -2 - Incorrect number of arguments provided
+  -3 - Invalid triangle
+
 ### Break down into end to end tests
 
 Explain what these tests test and why
