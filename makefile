@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I. -Wall -Wextra -Wpedantic -Werror -ggdb3
+CFLAGS=-I. -Wall -Wextra -Wpedantic -Werror
 DEPS = Triangle.h
 OBJ = Trianglecalc.o Triangle.o
 LIBS=-lm
@@ -8,4 +8,9 @@ LIBS=-lm
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 Trianglecalc: $(OBJ)
-	$(CC) -o triangle $^ $(CFLAGS) $(LIBS)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+.PHONY: clean
+
+clean:
+	rm *.o $(objects) Trianglecalc
