@@ -71,16 +71,51 @@ The test log contains the output for each test case. Each test has a summary at 
 
 ### Unit Tests
 
-
-#### area\_of\_triangle() test()
-
-#### verify\triangle() test
-
 #### validate\_input() test
+The validate\_input() function makes sure that the side lengths given by the user are valid nonzero integers within the range of a 32 bit unsigned integer. This function has to handle input from command line arguments (where the end of the user input is '\0') as well as input the user gave from stdin (where the end of the user input is '\n'). Because the get\_side\_length() function is responsible for getting the input from the user from stdin, and because this function calls validate\_input() once it has done so, all the test cases for this function are string literals ending in '\0'. The get\_side\_length() test uses the same test cases except ending in '\n' so total coverage is acheived.
+The following test cases are tested:
+* A large negative integer
+* A small negative integer
+* Zero
+* A small positive integer
+* The maximum value of a 32 bit unsigned integer
+* An integer that is too large but fits in the input buffer
+* Two integers separated by spaces that fits in the input buffer
+* A floating point number
+* A string that fits in the input buffer
+* A string that is too large for the input buffer
+* An integer that is too large for the input buffer
+* An integer that is too large for the input buffer with spaces
+* A comma separated list of integers
+* A string that begins with numbers
+* A string that ends with numbers
+* A string that begins with numbers with a space between the digits and the characters
+* A string that ends with numbers with a space between the digits and the characters
+
+Each test case is passed to the validate\_input() function and the result is compared to the expected result.
 
 #### get\_side\_length() test
 
-Explain what these tests test and why
+The get\_side\_length() function gets a string from the user, converts that string into an integer, and validates the integer with the validate\_input() function. The same test cases as the validate\_input() function are used except each string ends with a '\n' as if it was collected from the user from stdin. The fmemopen() function is used to provide a mock stdin stream that is filled with the appropriate input and then passed to the get\_side\_length() funciton.
+
+#### verify\triangle() test
+The verify\_triangle() function makes sure that the side lengths given by the user can form a valid triangle. At this point in the code the input has been validated so only values that are within the range of a 32 bit unsigned integer are tested. The following test cases are tested:
+* Valid right triangle
+* Valid equilateral triangle
+* Valid isoceles triangle
+* Valid scalene triangle
+* Invalid triangle with side A too long
+* Invalid triangle with side B too long
+* Invalid triangle with side C too long
+To test that integer overflow is handled correctly (really "wraparound" because unsigned integers are used):
+* Largest valid triangle (side lengths of UINT32\_MAX)
+* Invalid triangle with integer overflow
+* Valid triangle with integer overflow
+
+Each test case is passed to the verify\_triangle() function and the result is compared to the expected result.
+
+#### area\_of\_triangle() test
+The area\_of\_triangle() function calculates the area of the triangle formed by 3 given side lengths. At the point in the code the input has been validated. Triangle side lengths can only be nonzero integers that fit within the range of an unsigned 32 bit integer. In addition the side lengths passed to this function have already been verified to form a valid triangle. The test cases begin with the smallest possible input, a triangle with side lengths of (1, 1, 1) and increase in magnitude until they reach the largest possible input, a triangle with side lengths of (UINT32\_MAX, UINT32\_MAX, UINT32\_MAX). For each test case the area is calculated, the result is considered valid if it is within 1% of the actual value.
 
 ### Miscellaneous Testing Info
 main() function error conditions:
