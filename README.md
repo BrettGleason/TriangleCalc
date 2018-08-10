@@ -61,6 +61,7 @@ Step 2: Run tests with make.
 ```
 make test-all
 ```
+Tests can also be run individually by running the appropriate executable file.
 
 Step 3: Look at test log to verify tests were successful.
 ```
@@ -70,35 +71,25 @@ The test log contains the output for each test case. Each test has a summary at 
 
 ### Unit Tests
 
-### End to end test
+
+#### area\_of\_triangle() test()
+
+#### verify\triangle() test
+
+#### validate\_input() test
+
+#### get\_side\_length() test
+
+Explain what these tests test and why
+
+### Miscellaneous Testing Info
 main() function error conditions:
   -1 - Invalid side length provided
   -2 - Incorrect number of arguments provided
   -3 - Invalid triangle
 
-### Break down into end to end tests
+Each unit test returns the number of failed test cases found.
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-<!--- ### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
---->
-
-<!--- ## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
---->
 ## Contributing
 
 1. Fork the project (<https://github.com/yourname/yourproject/fork>)
@@ -107,14 +98,10 @@ Give an example
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
-<!--- ## Versioning --->
-
 ## Authors
 
 * **Brett Gleason**  - [Brett Gleason](https://github.com/BrettGleason)
 
-<!--- See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
---->
 ## License
 
 This project is licensed under the MIT License - see the ``LICENSE`` file for details
