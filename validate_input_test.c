@@ -40,7 +40,10 @@ int main(void) {
 					   0,
 					   0,
 					   0};
+	uint32_t fail_count = 0;
 	uint32_t result, output = 0;
+
+	printf("********** validate_input() test **********\n\n");
 
 	for (uint32_t i = 0; i < TEST_COUNT; i++) {
 		printf("Test %u input: %s\n", i + 1, test[i]);
@@ -52,12 +55,22 @@ int main(void) {
 			printf("input is invalid, ");
 		}
 		if (result == exp_result[i]) {
-			printf("TEST %u OK\n", i + 1);
+			printf("TEST %u OK\n\n", i + 1);
 		}
 		else {
-			printf("TEST %u FAILED\n", i + 1);
+			printf("TEST %u FAILED\n\n", i + 1);
+			fail_count++;
 		}
 	}
+
+	if (fail_count == 0) {
+		printf("ALL TEST CASES PASSED.\n");
+	}
+	else {
+		printf("%u TEST_CASE(S) FAILED.\n", fail_count);
+	}
+
+	printf("********** End of validate_input() test **********\n\n");
 	
-	return 0;
+	return fail_count;
 }

@@ -52,7 +52,9 @@ int main(void) {
 	// test[9] = {UINT32_MAX, UINT32_MAX, 50000}; // Valid triangle with integer overflow
 	exp_result[9] = 1;
 
-	
+	uint32_t fail_count = 0;
+
+	printf("********** verify_triangle() test **********\n\n");
 
 	uint32_t result = 2;
 	
@@ -67,14 +69,25 @@ int main(void) {
 		}
 		else {
 			printf("Result out of bounds, ");
+			fail_count++;
 		}
 		if (result == exp_result[i]) {
-			printf("TEST %u OK\n", i + 1);
+			printf("TEST %u OK\n\n", i + 1);
 		}
 		else {
-			printf("TEST %u FAILED\n", i + 1);
+			printf("TEST %u FAILED\n\n", i + 1);
+			fail_count++;
 		}
 	}
 
-	return 0;
+	if (fail_count == 0) {
+		printf("ALL TEST CASES PASSED.\n");
+	}
+	else {
+		printf("%u TEST CASE(S) FAILED.\n", fail_count);
+	}
+	
+	printf("********** End of verify_triangle() test **********\n\n");
+
+	return fail_count;
 }

@@ -48,6 +48,10 @@ int main(void) {
 					   0,
 					   0,
 					   0};
+	uint32_t fail_count = 0;
+
+	printf("********** get_side_length() test **********\n\n");
+
 	uint32_t result = 0, output = 0;
 
 	for (uint32_t i = 0; i < TEST_COUNT; i++) {
@@ -67,10 +71,20 @@ int main(void) {
 		}
 		else {
 			printf("TEST %u FAILED\n\n", i + 1);
+			fail_count++;
 		}
 
 		fclose(mock_stdin);
 	}
 	
-	return 0;
+	if (fail_count == 0) {
+		printf("ALL TEST CASES PASSED.\n");
+	}
+	else {
+		printf("%u TEST CASE(S) FAILED.\n", fail_count);
+	}
+
+	printf("********** End of get_side_length() test **********\n\n");
+	
+	return fail_count;
 }

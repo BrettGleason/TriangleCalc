@@ -33,9 +33,12 @@ int main(void) {
 				     6000000000000.0,
 				     60000000000000000.0,
 				     7987674488751707136.0};
+	uint32_t fail_count = 0;
 
 	double area = 0.0;
 	double result = 100.0;
+
+	printf("********** area_of_triangle() test **********\n\n");
 
 	for (uint32_t i = 0; i < (sizeof(test) / sizeof(struct triangle_3s)); i++) {
 		printf("Test case %u: {%u, %u, %u}\n", i + 1, test[i].a, test[i].b, test[i].c);
@@ -50,10 +53,20 @@ int main(void) {
 		}
 		else {
 			printf("Error in result is greater than 1%%, TEST %u FAILED\n\n", i + 1);
+			fail_count++;
 		}
 	}
 
-	return 0;
+	if (fail_count == 0) {
+		printf("ALL TEST CASES PASSED.\n");
+	}
+	else {
+		printf("%u TEST CASE(S) FAILED.\n", fail_count);
+	}
+
+	printf("********** End of area_of_triangle() test **********\n\n");
+
+	return fail_count;
 }
 
 double close_enough(double test_value, double real_value) {
