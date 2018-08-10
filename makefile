@@ -17,6 +17,12 @@ tests: $(TESTOBJ)
 	$(CC) -o validate_input_test validate_input_test.o Triangle.o $(CFLAGS) $(LIBS)
 	$(CC) -o get_side_length_test get_side_length_test.o Triangle.o $(CFLAGS) $(LIBS)
 
+test-all:
+	./area_of_triangle_test > test_log.txt
+	./verify_triangle_test >> test_log.txt
+	./validate_input_test >> test_log.txt
+	./get_side_length_test >> test_log.txt
+
 .PHONY: clean
 
 clean:
