@@ -4,25 +4,31 @@ Calculate the area of a triangle given three side lengths.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+GCC, Git, make
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Step 1: Clone the repository to your local machine.
 
 ```
-Give the example
+git clone https://github.com/BrettGleason/TriangleCalc
 ```
 
-And repeat
+Step 2: Compile from source using make and GCC.
 
 ```
-until finished
+make
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Step 3: Run the program.
+
+```
+./Trianglecalc
+```
+If run with no command line arguments, the program will prompt you for the side lengths of your triangle. Alternatively, the side lengths can be passed as command line arguments.The following command will calculate the area of a triangle with side lengths of 3 meters, 4 meters, and 5 meters.
+```
+./Trianglecalc 3 4 5
+```
 
 ## Development
 
