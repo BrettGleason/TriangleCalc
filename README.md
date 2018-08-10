@@ -32,15 +32,41 @@ If run with no command line arguments, the program will prompt you for the side 
 
 ## Development
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See Installing for notes on how to deploy the project on a live system.
+
+Step 1: Clone the repository to your local machine.
 
 ```
-Give examples
+git clone https://github.com/BrettGleason/TriangleCalc
 ```
 
-## Running the tests
+Step 2: Update source files as needed.
 
-Explain how to run the automated tests for this system
+Step 3: Compile from source using make and GCC.
+
+```
+make
+```
+
+See 'Running the Tests' for information on testing.
+
+## Running the Tests
+
+Step 1: Build the tests from source with make.
+```
+make tests
+```
+
+Step 2: Run tests with make.
+```
+make test-all
+```
+
+Step 3: Look at test log to verify tests were successful.
+```
+less test_log.txt
+```
+The test log contains the output for each test case. Each test has a summary at the end indicating either that all test cases passed or that some test cases failed.
 
 ### Unit Tests
 
