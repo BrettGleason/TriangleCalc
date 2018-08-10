@@ -26,4 +26,4 @@ test-all:
 .PHONY: clean
 
 clean:
-	rm *.o $(objects) Trianglecalc
+	rm *.o $(objects) Trianglecalc area_of_triangle_test verify_triangle_test validate_input_test get_side_length_test
