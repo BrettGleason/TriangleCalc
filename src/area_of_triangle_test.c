@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <math.h>
-#include "Triangle.h"
+#include "../include/Triangle.h"
 
 #define TEST_COUNT 7
 

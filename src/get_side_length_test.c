@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-#include "Triangle.h"
+#include "../include/Triangle.h"
 
 /* Iterate when new test cases are added */
 #define TEST_COUNT 17

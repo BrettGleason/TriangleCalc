@@ -1,11 +1,20 @@
 CC=gcc
-CFLAGS=-I. -Wall -Wextra -Wpedantic -Werror
-DEPS = Triangle.h
-OBJ = Trianglecalc.o Triangle.o
-TESTOBJ = area_of_triangle_test.o verify_triangle_test.o validate_input_test.o get_side_length_test.o Triangle.o
+IDIR=../include
+CFLAGS=-I$(IDIR) -Wall -Wextra -Wpedantic -Werror
+ODIR=obj
+
+_DEPS = Triangle.h
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+
+_OBJ = Trianglecalc.o Triangle.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+
+_TESTOBJ = area_of_triangle_test.o verify_triangle_test.o validate_input_test.o get_side_length_test.o Triangle.o
+TESTOBJ = $(patsubst %,$(ODIR)/%,$(_TESTOBJ))
+
 LIBS=-lm
 
-%.o: %.c $(DEPS)
+$(OBJ): $(ODIR)/%o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 Trianglecalc: $(OBJ)

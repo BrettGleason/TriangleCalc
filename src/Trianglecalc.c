@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "Triangle.h"
+#include "../include/Triangle.h"
 
 int main(int argc, char *argv[]) {
 	uint32_t a, b, c = 0;

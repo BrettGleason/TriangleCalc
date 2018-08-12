@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "Triangle.h"
+#include "../include/Triangle.h"
 
 #define TEST_COUNT 17
 
