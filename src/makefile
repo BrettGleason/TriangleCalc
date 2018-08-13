@@ -14,17 +14,17 @@ TESTOBJ = $(patsubst %,$(ODIR)/%,$(_TESTOBJ))
 
 LIBS=-lm
 
-$(OBJ): $(ODIR)/%o: %.c $(DEPS)
+$(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 Trianglecalc: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 tests: $(TESTOBJ)
-	$(CC) -o area_of_triangle_test area_of_triangle_test.o Triangle.o $(CFLAGS) $(LIBS)
-	$(CC) -o verify_triangle_test verify_triangle_test.o Triangle.o $(CFLAGS) $(LIBS)
-	$(CC) -o validate_input_test validate_input_test.o Triangle.o $(CFLAGS) $(LIBS)
-	$(CC) -o get_side_length_test get_side_length_test.o Triangle.o $(CFLAGS) $(LIBS)
+	$(CC) -o area_of_triangle_test obj/area_of_triangle_test.o obj/Triangle.o $(CFLAGS) $(LIBS)
+	$(CC) -o verify_triangle_test obj/verify_triangle_test.o obj/Triangle.o $(CFLAGS) $(LIBS)
+	$(CC) -o validate_input_test obj/validate_input_test.o obj/Triangle.o $(CFLAGS) $(LIBS)
+	$(CC) -o get_side_length_test obj/get_side_length_test.o obj/Triangle.o $(CFLAGS) $(LIBS)
 
 test-all:
 	./area_of_triangle_test > test_log.txt
@@ -32,7 +32,7 @@ test-all:
 	./validate_input_test >> test_log.txt
 	./get_side_length_test >> test_log.txt
 
-.PHONY: clean
+.PHONY: tests test-all clean
 
 clean:
-	rm *.o $(objects) Trianglecalc area_of_triangle_test verify_triangle_test validate_input_test get_side_length_test
+	rm $(ODIR)/*.o Trianglecalc area_of_triangle_test verify_triangle_test validate_input_test get_side_length_test 
