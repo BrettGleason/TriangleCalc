@@ -73,7 +73,7 @@ The test log contains the output for each test case. Each test has a summary at 
 
 #### validate\_input() test
 The validate\_input() function makes sure that the side lengths given by the user are valid nonzero integers within the range of a 32 bit unsigned integer. This function has to handle input from command line arguments (where the end of the user input is '\0') as well as input the user gave from stdin (where the end of the user input is '\n'). Because the get\_side\_length() function is responsible for getting the input from the user from stdin, and because this function calls validate\_input() once it has done so, all the test cases for this function are string literals ending in '\0'. The get\_side\_length() test uses the same test cases except ending in '\n' so total coverage is acheived.
-The following test cases are tested:
+The following cases are tested:
 * A large negative integer
 * A small negative integer
 * Zero
@@ -98,7 +98,7 @@ Each test case is passed to the validate\_input() function and the result is com
 
 The get\_side\_length() function gets a string from the user, converts that string into an integer, and validates the integer with the validate\_input() function. The same test cases as the validate\_input() function are used except each string ends with a '\n' as if it was collected from the user from stdin. The fmemopen() function is used to provide a mock stdin stream that is filled with the appropriate input and then passed to the get\_side\_length() funciton.
 
-#### verify\triangle() test
+#### verify\_triangle() test
 The verify\_triangle() function makes sure that the side lengths given by the user can form a valid triangle. At this point in the code the input has been validated so only values that are within the range of a 32 bit unsigned integer are tested. The following test cases are tested:
 * Valid right triangle
 * Valid equilateral triangle
@@ -107,6 +107,7 @@ The verify\_triangle() function makes sure that the side lengths given by the us
 * Invalid triangle with side A too long
 * Invalid triangle with side B too long
 * Invalid triangle with side C too long
+
 To test that integer overflow is handled correctly (really "wraparound" because unsigned integers are used):
 * Largest valid triangle (side lengths of UINT32\_MAX)
 * Invalid triangle with integer overflow
