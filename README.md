@@ -14,20 +14,47 @@ Step 1: Clone the repository to your local machine.
 git clone https://github.com/BrettGleason/TriangleCalc
 ```
 
-Step 2: Compile from source using make and GCC.
+Step 2: Navigate to the `src` directory.
+
+```
+cd src
+```
+
+Step 3: Compile from source using make and GCC.
 
 ```
 make
 ```
 
-Step 3: Run the program.
+Step 4: Install the program.
 
 ```
-./Trianglecalc
+make install
+```
+
+#### Running the Program
+
+
+```
+trianglecalc
 ```
 If run with no command line arguments, the program will prompt you for the side lengths of your triangle. Alternatively, the side lengths can be passed as command line arguments.The following command will calculate the area of a triangle with side lengths of 3 meters, 4 meters, and 5 meters.
 ```
-./Trianglecalc 3 4 5
+trianglecalc 3 4 5
+```
+
+#### Uninstalling
+
+Step 1: Navigate to the `src` directory.
+
+```
+cd src
+```
+
+Step 2: Uninstall the program.
+
+```
+make uninstall
 ```
 
 ## Development
