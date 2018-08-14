@@ -6,7 +6,7 @@ ODIR=obj
 _DEPS = Triangle.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = Trianglecalc.o Triangle.o
+_OBJ = trianglecalc.o Triangle.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 _TESTOBJ = area_of_triangle_test.o verify_triangle_test.o validate_input_test.o get_side_length_test.o Triangle.o
@@ -14,10 +14,15 @@ TESTOBJ = $(patsubst %,$(ODIR)/%,$(_TESTOBJ))
 
 LIBS=-lm
 
+DESTDIR=
+PREFIX=/usr/local
+BINDIR=$(PREFIX)/bin
+MANDIR=$(PREFIX)/share/man
+
 $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-Trianglecalc: $(OBJ)
+trianglecalc: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 tests: $(TESTOBJ)
@@ -32,7 +37,14 @@ test-all:
 	./validate_input_test >> test_log.txt
 	./get_side_length_test >> test_log.txt
 
-.PHONY: tests test-all clean
+.PHONY: tests test-all clean install uninstall
 
 clean:
-	rm $(ODIR)/*.o Trianglecalc area_of_triangle_test verify_triangle_test validate_input_test get_side_length_test 
+	rm $(ODIR)/*.o trianglecalc area_of_triangle_test verify_triangle_test validate_input_test get_side_length_test 
+
+install: trianglecalc
+	mkdir -p $(DESTDIR)$(BINDIR) # $(DESTDIR)$(MANDIR)/man1
+	cp $< $(DESTDIR)$(BINDIR)/trianglecalc
+
+uninstall:
+	rm -f $(DESTDIR)$(BINDIR)/trianglecalc
