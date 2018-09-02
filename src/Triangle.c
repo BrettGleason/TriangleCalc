@@ -34,9 +34,6 @@ uint32_t verify_triangle(struct triangle_3s triangle) {
 			(triangle.b + triangle.c > triangle.a || ovf_bc == 1) ) {
 		result = 1;
 	}
-	else {
-		result = 0;
-	}
 
 	return result;
 }
@@ -78,10 +75,12 @@ uint32_t get_side_length(uint32_t* output, FILE* in_stream) {
 		while ((extra_char = fgetc(in_stream)) != '\n' && extra_char != EOF) {
 			continue;
 		}
-		return 0;
+		result = 0;
 	}	
 	
-	result = validate_input(side_length, output);
+	else {
+		result = validate_input(side_length, output);
+	}
 
 	return result;
 }
