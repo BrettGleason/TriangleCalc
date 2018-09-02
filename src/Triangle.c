@@ -90,6 +90,7 @@ uint32_t validate_input(char* input, uint32_t* output) {
 	/* Converts the string from the user into a valid unsigned 32 bit integer.
 	 * If the user input is valid, return 1
 	 * If the user input is invalid, return 0 */
+	uint32_t result = 0;
 
 	/* Stores the address at which strtol stops reading the string */
 	char *endpoint;
@@ -104,17 +105,15 @@ uint32_t validate_input(char* input, uint32_t* output) {
 	 * endpoint will be '\0' if passed as a command line argument or '\n'
 	 * if string is from user input. */
 	if (*endpoint != '\0' && *endpoint != '\n') {
-		return 0;
+		result = 0;
 	}
 
-	if (converted_number > 0 && converted_number <= UINT32_MAX) {
+	else if (converted_number > 0 && converted_number <= UINT32_MAX) {
 		*output = converted_number;
-	}
-	else {
-		return 0;
+		result = 1;
 	}
 
-	return 1;
+	return result;
 }
 
 
